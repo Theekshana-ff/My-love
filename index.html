@@ -18,13 +18,13 @@
         .container {
             text-align: center;
             background: white;
-            padding: 30px;
+            padding: 25px;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             position: relative;
-            width: 80%;
+            width: 85%;
             max-width: 340px;
-            height: 380px; /* Gif එක දාන්න උස වැඩි කළා */
+            height: 380px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -37,15 +37,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
         }
         .gif-container img {
             height: 100%;
+            max-width: 100%;
             object-fit: contain;
         }
         h2 {
             color: #ff4d6d;
             font-size: 24px;
-            margin: 10px 0;
+            margin: 15px 0;
         }
         .buttons {
             display: flex;
@@ -54,7 +56,7 @@
             width: 100%;
             height: 50px;
             position: relative;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         button {
             padding: 12px 25px;
@@ -79,9 +81,9 @@
 <body>
 
 <div class="container" id="mainContainer">
-    <!-- මුලින්ම පෙනෙන Cute Sticker එක -->
+    <!-- GIPHY ලින්ක් එකක් පාවිච්චි කර ඇත -->
     <div class="gif-container">
-        <img id="bearGif" src="https://media.tenor.com/al46anu_GcMAAAAi/teddy-bear-cute.gif" alt="Cute Bear">
+        <img id="bearGif" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbms5eDRoN3JnZnV5amM1dzg1Ym95b3N6bW13Z3N0OHp0ZndpbnZpciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute Bear">
     </div>
     
     <h2 id="question">ඔයා මට ආදරේ ද?</h2>
@@ -100,12 +102,10 @@
     const bearGif = document.getElementById('bearGif');
     const buttonsDiv = document.querySelector('.buttons');
 
-    // බටන් එක දුවන Function එක
     const moveButton = () => {
         const containerWidth = container.offsetWidth;
-        // බටන් එක container එකෙන් සහ උඩ තියෙන Gif එකෙන් පිට පැනීම වැළැක්වීමට සීමා පැනවීම
         const newX = Math.floor(Math.random() * (containerWidth - noBtn.offsetWidth - 40)) + 20;
-        const newY = Math.floor(Math.random() * 60) - 20; // බොත්තම් ඇති හරියේ පමණක් සෙලවීමට
+        const newY = Math.floor(Math.random() * 60) - 20;
 
         noBtn.style.left = `${newX}px`;
         noBtn.style.top = `${newY}px`;
@@ -117,12 +117,11 @@
         moveButton();
     });
 
-    // "ඔව්" ක්ලික් කළ විට වෙනස් වන දේ
     yesBtn.addEventListener('click', () => {
         question.innerHTML = "මං ඒක දන්නවා! ❤️";
         buttonsDiv.style.display = 'none';
-        // හාදුවක් දෙන වලස් පැටියෙක්ගේ Sticker එකක් ලෝඩ් කිරීම
-        bearGif.src = "https://media.tenor.com/gU_79G8qn6AAAAAi/goma-goma-waving.gif";
+        // "ඔව්" කිව්වම වැටෙන Happy GIPHY Sticker එක
+        bearGif.src = "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWZ6OHg1cHJmMnpxZXE4Y2lreXUzOHJjZTRxeXpxbW1xZnB1NzRxdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l0QrZmx6z5fQpI6i0/giphy.gif";
     });
 </script>
 
